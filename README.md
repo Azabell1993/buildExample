@@ -79,6 +79,9 @@ Connect Sucess!!
 로그인 실패!!
 ``` 
 
+
+
+
 > Success 
 ```  
 azabell@azabellUbuntu:~/Desktop/test/mysqlTest$ ./login
@@ -111,5 +114,10 @@ Connect Sucess!!
 ##############################################
 로그인 시각 :   2023-02-15 14:04:50
 ```  
-```  
+
+
+> SQL EXAMPLE
+| MEMBER_ID | MEMBER_PW | MEMBER_GR | MEMBER_NICKNAME | MEMBER_BIRTH | MEMBER_ADDR | MEMBER_EMAIL | MEMBER_INFONUM | MEMBER_JOINDATE | MEMBER_BLACKYN | MEMBER_EVENTQTY |
+|----|----|----|----|----|----|----|----|----|----|ㅍ
+| testUser00 | testUser00 | 1 | testUser00 | 2023-02-15 13:43:48 | 서울특별시 | text00@naver.com | e9aff233bf066141b3f458e2b225552a | 2023-02-15 13:43:48 | 1 | 0 |
 
