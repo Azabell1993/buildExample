@@ -1,9 +1,11 @@
 # buildExample
 
 1. How to run at emcc?
+```  
 emcc main.c -o test.js -s "EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap','UTF8ToString']" -s "EXPORTED_FUNCTIONS=['_malloc','_free']"
+```  
 
-if you haven't emscripten, you must download and setting same here.
+> if you haven't emscripten, you must download and setting same here.
 ```  
 git clone https://github.com/emscripten-core/emsdk.git
 cp -r emsdk /home/$USER/Desktop/
@@ -39,10 +41,75 @@ CREATE TABLE MEMBERTBL (
 	,MEMBER_EVENTQTY		INT						COMMENT '이벤트 당첨 누적 횟수'
 ) DEFAULT CHARSET=utf8mb4;
 ```  
--> insert table example
+> insert table example
 ```  
 INSERT INTO MEMBERTBL
 (MEMBER_ID, MEMBER_PW, MEMBER_GR,MEMBER_NICKNAME,MEMBER_BIRTH,MEMBER_ADDR,MEMBER_EMAIL,MEMBER_INFONUM,MEMBER_JOINDATE,MEMBER_BLACKYN,MEMBER_EVENTQTY)
 VALUES ('testUser00', 'testUser00', 1, 'testUser00', cast(NOW() as CHAR), '서울특별시', 'text00@naver.com',
 SUBSTR(MD5(RAND()),1,60), cast(NOW() as CHAR) , 1, 0);
+```
+
+> Failed
+```
+azabell@azabellUbuntu:~/Desktop/test/mysqlTest$ ./login
+아이디 :ls
+비밀번호 :ls
+=======================================
+db_host 125.128.104.134
+db_user azabellcode
+db_pass dkwkqpf!123@2324iikeQA
+db_name azabellcode
+
+Connect Sucess!!
+ !! RUN QUERY !!
+=====================================================================================
+	 SELECT DISTINCT 	                    IFNULL((SELECT CAST((  SELECT COUNT(*)          			            FROM (  SELECT MEMBER_INFONUM                   			                    FROM MEMBERTBL                          			                    WHERE MEMBER_ID = 'ls'          			                    AND MEMBER_PW = 'ls'            			                    AND MEMBER_INFONUM = (  SELECT MEMBER_INFONUM       			                                            FROM MEMBERTBL                          			                                            WHERE MEMBER_ID = 'ls')) A)     			                                            AS CHAR) ),0) AS LOGIN                                                  FROM MEMBERTBL; 
+=====================================================================================
+ 	 query_stat_chk : 0 
+ !! RUN QUERY !!
+=====================================================================================
+	 SELECT DISTINCT m.MEMBER_ID                          FROM MEMBERTBL m                            WHERE MEMBER_ID = 'ls' AND MEMBER_PW = 'ls'; 
+=====================================================================================
+ 	 query_stat : 0
+  !! RUN QUERY !!
+=====================================================================================
+	 select now() 
+=====================================================================================
+ 	 query_stat_date : 0
+로그인 실패!!
+``` 
+
+> Success 
 ```  
+azabell@azabellUbuntu:~/Desktop/test/mysqlTest$ ./login
+아이디 :testUser00
+비밀번호 :testUser00
+=======================================
+db_host 125.128.104.134
+db_user azabellcode
+db_pass dkwkqpf!123@2324iikeQA
+db_name azabellcode
+
+Connect Sucess!!
+ !! RUN QUERY !!
+=====================================================================================
+	 SELECT DISTINCT 	                    IFNULL((SELECT CAST((  SELECT COUNT(*)          			            FROM (  SELECT MEMBER_INFONUM                   			                    FROM MEMBERTBL                          			                    WHERE MEMBER_ID = 'testUser00'          			                    AND MEMBER_PW = 'testUser00'            			                    AND MEMBER_INFONUM = (  SELECT MEMBER_INFONUM       			                                            FROM MEMBERTBL                          			                                            WHERE MEMBER_ID = 'testUser00')) A)     			                                            AS CHAR) ),0) AS LOGIN                                                  FROM MEMBERTBL; 
+=====================================================================================
+ 	 query_stat_chk : 0 
+ !! RUN QUERY !!
+=====================================================================================
+	 SELECT DISTINCT m.MEMBER_ID                          FROM MEMBERTBL m                            WHERE MEMBER_ID = 'testUser00' AND MEMBER_PW = 'testUser00'; 
+=====================================================================================
+ 	 query_stat : 0
+  !! RUN QUERY !!
+=====================================================================================
+	 select now() 
+=====================================================================================
+ 	 query_stat_date : 0
+==============================로그인 성공!!!===================================
+회원 testUser00님 환영합니다. 
+##############################################
+로그인 시각 :   2023-02-15 14:04:50
+```  
+```  
+
