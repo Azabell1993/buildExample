@@ -58,6 +58,10 @@ emcc -v
 ```    
     
 ## 2. How to run at mysql source code?
+  
+  > gcc login.c -o login -lmysqlclient
+  
+  
 1) you must modify at connect.json
 ```  
 {
