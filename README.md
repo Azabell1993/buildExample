@@ -55,10 +55,10 @@ azabell@azabellUbuntu:~/Desktop/test/mysqlTest$ ./login
 아이디 :ls
 비밀번호 :ls
 =======================================
-db_host 125.128.104.134
-db_user azabellcode
-db_pass dkwkqpf!123@2324iikeQA
-db_name azabellcode
+db_host 
+db_user 
+db_pass 
+db_name 
 
 Connect Sucess!!
  !! RUN QUERY !!
@@ -85,10 +85,10 @@ azabell@azabellUbuntu:~/Desktop/test/mysqlTest$ ./login
 아이디 :testUser00
 비밀번호 :testUser00
 =======================================
-db_host 125.128.104.134
-db_user azabellcode
-db_pass dkwkqpf!123@2324iikeQA
-db_name azabellcode
+db_host 
+db_user 
+db_pass 
+db_name 
 
 Connect Sucess!!
  !! RUN QUERY !!
